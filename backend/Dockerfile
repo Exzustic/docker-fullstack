@@ -12,4 +12,4 @@ EXPOSE 80
 
 # VOLUME [ "/app/package.json" ]
 
-CMD [ "node", "app.js"]
+CMD [ "npm", "start"]

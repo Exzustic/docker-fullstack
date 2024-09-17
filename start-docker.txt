@@ -6,4 +6,4 @@ start backend (in folder backend):
 docker run --rm --name multi-server --network multi-net -v "$(pwd):/app" -p 80:80 -v multi-logs:/app/logs multi-back 
 
 start front (in folder frontend):
-docker run --name app --rm -p 3000:3000 multi-front
+docker run --name app --rm -p 3000:3000 -v "$(pwd)/src:/app/src" multi-front 

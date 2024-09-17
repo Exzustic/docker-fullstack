@@ -38,7 +38,7 @@ app.get('/goals', async (req, res) => {
     });
     console.log('FETCHED GOALS');
   } catch (err) {
-    console.error('ERROR FETCHING GOALS');
+    console.error('ERROR FETCHING GOALS!!!!');
     console.error(err.message);
     res.status(500).json({ message: 'Failed to load goals.' });
   }
@@ -94,7 +94,7 @@ mongoose.connect(
       console.error('FAILED TO CONNECT TO MONGODB');
       console.error(err);
     } else {
-      console.log('CONNECTED TO MONGODB');
+      console.log('CONNECTED TO MONGODB!!!');
       app.listen(80);
     }
   }
