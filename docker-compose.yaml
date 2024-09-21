@@ -1,0 +1,39 @@
+name: multiapp
+version: "3.8"
+services:
+  mongodb:
+    container_name: multidb
+    image: mongo
+    volumes:
+      - multi-data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+  backend:
+    build: ./backend
+    # build: 
+    #   context: ./backend
+    #   dockerfile: Dockerfile
+    # image: multi-back
+    container_name: multi-back
+    volumes:
+      - multi-logs:/app/logs
+      - ./backend:/app
+    ports:
+      - "80:80"
+    depends_on:
+      - mongodb
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src:/app/src
+    depends_on:
+      - backend
+    stdin_open: true
+    tty: true
+
+volumes:
+  multi-data:
+  multi-logs:
